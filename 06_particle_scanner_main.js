@@ -11,6 +11,7 @@ function loop() {
 function main() {
     sketch.setup();
     loop();
+    sketch.teardown();
 }
 
 main();
