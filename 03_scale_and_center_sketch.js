@@ -15,10 +15,16 @@ function calculateSize(ratioOfInnerRectangle, sizeOfWindow) {
     return ratioOfInnerRectangle * sizeOfWindow;
 }
 
-r.InitWindow(windowWidth, windowHeight, "calculatePosition");
-r.SetTargetFPS(60);
+function setup() {
+    r.InitWindow(windowWidth, windowHeight, "calculatePosition");
+    r.SetTargetFPS(60);
+}
 
-while (!r.WindowShouldClose()) {
+function running() {
+    return !r.WindowShouldClose();
+}
+
+function draw() {
     r.BeginDrawing();
     const widthOfRectangle1 = calculateSize(
         widthRatioOfRectangle1,
@@ -65,4 +71,15 @@ while (!r.WindowShouldClose()) {
         r.WHITE,
     );
     r.EndDrawing();
+}
+
+function teardown() {
+    r.CloseWindow();
+}
+
+module.exports = {
+    setup,
+    running,
+    draw,
+    teardown,
 }

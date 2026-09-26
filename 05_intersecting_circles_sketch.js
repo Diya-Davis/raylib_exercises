@@ -6,9 +6,11 @@ function setup() {
     r.InitWindow(windowWidth, windowHeight, "Intersecting circles");
     r.SetTargetFPS(10);
 }
+
 function distanceBetween2Points(p1x, p1y, p2x, p2y) {
     return ((p1x - p2x) ** 2 + (p1y - p2y) ** 2) ** 0.5;
 }
+
 function draw() {
     r.BeginDrawing();
     r.ClearBackground(r.WHITE);
@@ -26,15 +28,17 @@ function draw() {
     r.EndDrawing();
 }
 
-function loop() {
-    while (!r.WindowShouldClose()) {
-        draw();
-    }
+function running() {
+    return !r.WindowShouldClose()
 }
 
-function main() {
-    setup();
-    loop();
+function teardown() {
     r.CloseWindow();
 }
-main();
+
+module.exports = {
+    setup,
+    running,
+    draw,
+    teardown,
+}

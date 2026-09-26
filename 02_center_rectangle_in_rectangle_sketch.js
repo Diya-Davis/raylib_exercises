@@ -9,10 +9,15 @@ const heightOfRectangle2 = 20;
 function calculatePosition(windowSize, rectanglesize) {
     return (windowSize - rectanglesize) / 2;
 }
-r.InitWindow(windowWidth, windowHeight, "calculatePosition");
-r.SetTargetFPS(60);
 
-while (!r.WindowShouldClose()) {
+function setup() {
+    r.InitWindow(windowWidth, windowHeight, "calculatePosition");
+    r.SetTargetFPS(60);
+}
+function running() {
+    return !r.WindowShouldClose()
+}
+function draw() {
     r.BeginDrawing();
     const positionXOfRectangle1 = calculatePosition(
         windowWidth,
@@ -43,4 +48,14 @@ while (!r.WindowShouldClose()) {
         r.WHITE,
     );
     r.EndDrawing();
+}
+
+function teardown() {
+    r.CloseWindow();
+}
+module.exports = {
+    setup,
+    draw,
+    running,
+    teardown,
 }

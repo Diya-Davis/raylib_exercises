@@ -10,14 +10,21 @@ const target1Radius = 5;
 const target2X = 500;
 const target2Y = 500;
 const target2Radius = 5;
-r.InitWindow(windowWidth, windowHeight, "calculatePosition");
-r.SetTargetFPS(60);
+
+function setup() {
+    r.InitWindow(windowWidth, windowHeight, "calculatePosition");
+    r.SetTargetFPS(60);
+}
 
 function calculateDistance(sourceX, sourceY, targetX, targetY) {
     return ((sourceX - targetX) ** 2 + (sourceY - targetY) ** 2) ** 0.5;
 }
 
-while (!r.WindowShouldClose()) {
+function running() {
+    return !r.WindowShouldClose();
+}
+
+function draw() {
     r.BeginDrawing();
     r.DrawCircle(sourceX, sourceY, sourceRadius, r.RED);
     r.DrawCircle(target1X, target1Y, target1Radius, r.GREEN);
@@ -40,4 +47,15 @@ while (!r.WindowShouldClose()) {
         r.DrawLine(sourceX, sourceY, target1X, target1Y, r.WHITE);
     }
     r.EndDrawing();
+}
+
+function teardown() {
+    r.CloseWindow();
+}
+
+module.exports = {
+    setup,
+    running,
+    draw,
+    teardown,
 }
