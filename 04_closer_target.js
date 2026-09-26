@@ -12,6 +12,7 @@ const target2Y = 500;
 const target2Radius = 5;
 r.InitWindow(windowWidth, windowHeight, "calculatePosition");
 r.SetTargetFPS(60);
+
 function calculateDistance(sourceX, sourceY, targetX, targetY) {
     return ((sourceX - targetX) ** 2 + (sourceY - targetY) ** 2) ** 0.5;
 }
